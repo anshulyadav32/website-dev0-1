@@ -1,0 +1,51 @@
+name: Deploy to Production Environment
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  set-environment:
+    name: Set Production Environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Create .env file
+        run: |
+          # Create .env file from secrets
+          echo "REACT_APP_ENV=production" > .env
+          echo "REACT_APP_API_URL=${{ secrets.PROD_API_URL }}" >> .env
+          echo "REACT_APP_DEBUG=false" >> .env
+          echo "REACT_APP_FEATURE_FLAGS_ENABLED=false" >> .env
+          echo "REACT_APP_API_KEY=${{ secrets.PROD_API_KEY }}" >> .env
+          echo "REACT_APP_AUTH_SECRET=${{ secrets.PROD_AUTH_SECRET }}" >> .env
+          echo "REACT_APP_ANALYTICS_ID=${{ secrets.PROD_ANALYTICS_ID }}" >> .env
+          echo "REACT_APP_SENTRY_DSN=${{ secrets.PROD_SENTRY_DSN }}" >> .env
+          
+          # Validate env file content (without showing secrets)
+          echo "Environment file created with the following keys:"
+          grep -o '^REACT_APP_[^=]*' .env
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      # Add your deployment steps here, e.g., deploying to production server
+      # - name: Deploy to production
+      #   run: |
+      #     # Your deployment commands here

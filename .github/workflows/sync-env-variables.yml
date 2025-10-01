@@ -1,0 +1,58 @@
+name: Sync Environment Variables
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to update (development, production, or all)'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - development
+          - production
+          - all
+
+jobs:
+  sync-env-variables:
+    name: Sync Environment Variables
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment != 'all' && github.event.inputs.environment || 'production' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Validate Environment Templates
+        run: |
+          if [ -d "env-templates" ]; then
+            echo "✅ Environment templates found."
+            ls -la env-templates/
+          else
+            echo "❌ Environment templates directory not found!"
+            exit 1
+          fi
+
+      - name: Update Development Environment
+        if: github.event.inputs.environment == 'development' || github.event.inputs.environment == 'all'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Updating development environment variables..."
+          # This step would normally use a script to sync the env-templates with GitHub Secrets
+          # For security reasons, we only show a placeholder that would be replaced by an actual implementation
+          echo "Development environment variables synced! (Note: This is a placeholder. Implement the actual syncing logic.)"
+
+      - name: Update Production Environment
+        if: github.event.inputs.environment == 'production' || github.event.inputs.environment == 'all'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Updating production environment variables..."
+          # This step would normally use a script to sync the env-templates with GitHub Secrets
+          # For security reasons, we only show a placeholder that would be replaced by an actual implementation
+          echo "Production environment variables synced! (Note: This is a placeholder. Implement the actual syncing logic.)"

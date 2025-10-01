@@ -18,6 +18,8 @@ A React-based DNS monitoring dashboard for the domain dev0-1.com owned by @anshu
 - **Frontend**: React 18 with TypeScript
 - **Styling**: Styled Components with responsive design
 - **DNS Queries**: Google DNS-over-HTTPS API
+- **CI/CD**: GitHub Actions with environment-specific deployments
+- **Environment Management**: Custom environment variable handling for different deployment targets
 - **HTTP Client**: Axios
 - **State Management**: React Context API
 - **Build Tool**: Create React App
@@ -58,6 +60,37 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Environment Management
+
+This project includes a comprehensive environment management system that handles different deployment environments (development, production, and local). See [ENVIRONMENT.md](ENVIRONMENT.md) for detailed documentation.
+
+### Key Features
+
+- **Environment Templates**: Pre-configured templates for different environments
+- **GitHub Actions Workflows**: Automated deployment with environment-specific configurations
+- **Secret Management**: Tools to sync environment variables with GitHub Secrets
+- **Local Development**: Scripts to generate local environment files
+
+### Quick Start with Environments
+
+1. Generate a local environment file:
+   ```bash
+   # On Linux/macOS
+   ./scripts/generate-env-files.sh local
+   
+   # On Windows
+   .\scripts\generate-env-files.ps1 local
+   ```
+
+2. For deployment environments, set up GitHub Secrets using the sync scripts:
+   ```bash
+   # On Linux/macOS
+   ./scripts/sync-env-to-github.sh production
+   
+   # On Windows
+   .\scripts\sync-env-to-github.ps1 production
+   ```
 
 ## Learn More
 
