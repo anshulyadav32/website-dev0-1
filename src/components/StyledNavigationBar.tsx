@@ -10,6 +10,7 @@ import {
   Flex,
   Input
 } from '../styles/StyledComponents';
+import logo from '../dns-logo.svg';
 import styled from 'styled-components';
 
 interface NavItem {
@@ -184,6 +185,7 @@ const NavigationBar: React.FC = () => {
     <Nav>
       <NavContainer>
         <NavBrand>
+          <img src={logo} alt="DNS Status" style={{ height: '32px', marginRight: '0.75rem' }} />
           <span style={{ color: 'var(--color-primary)' }}>dev0-1.com</span>
           <Badge variant="primary" style={{ marginLeft: '0.5rem' }}>Admin</Badge>
         </NavBrand>

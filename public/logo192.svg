@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" fill="none">
+  <!-- Background Circle -->
+  <circle cx="96" cy="96" r="90" fill="#EDF2FE" />
+  
+  <!-- DNS Connections (Network Lines) -->
+  <g stroke="#3B82F6" stroke-width="3">
+    <path d="M96 45 L66 75" />
+    <path d="M96 45 L126 75" />
+    <path d="M66 75 L45 105" />
+    <path d="M66 75 L90 105" />
+    <path d="M126 75 L102 105" />
+    <path d="M126 75 L147 105" />
+    <path d="M45 105 L54 135" />
+    <path d="M45 105 L36 135" />
+    <path d="M90 105 L81 135" />
+    <path d="M90 105 L99 135" />
+    <path d="M102 105 L111 135" />
+    <path d="M102 105 L93 135" />
+    <path d="M147 105 L138 135" />
+    <path d="M147 105 L156 135" />
+  </g>
+  
+  <!-- Server Node (Main) -->
+  <circle cx="96" cy="45" r="10" fill="#3B82F6" />
+  
+  <!-- DNS Nodes (Secondary) -->
+  <circle cx="66" cy="75" r="9" fill="#10B981" />
+  <circle cx="126" cy="75" r="9" fill="#10B981" />
+  
+  <!-- Endpoint Nodes (Level 3) -->
+  <circle cx="45" cy="105" r="7.5" fill="#6366F1" />
+  <circle cx="90" cy="105" r="7.5" fill="#6366F1" />
+  <circle cx="102" cy="105" r="7.5" fill="#6366F1" />
+  <circle cx="147" cy="105" r="7.5" fill="#6366F1" />
+  
+  <!-- Terminal Nodes (Level 4) -->
+  <circle cx="36" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="54" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="81" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="99" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="111" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="93" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="138" cy="135" r="6" fill="#F59E0B" />
+  <circle cx="156" cy="135" r="6" fill="#F59E0B" />
+  
+  <!-- DNS Text - Simplified for icon -->
+  <path d="M84 156 H108" stroke="#3B82F6" stroke-width="5" stroke-linecap="round" />
+  <path d="M96 156 L96 168" stroke="#3B82F6" stroke-width="5" stroke-linecap="round" />
+</svg>
