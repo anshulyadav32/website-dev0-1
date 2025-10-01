@@ -5,7 +5,6 @@ import {
   NavBrand, 
   NavMenu, 
   NavItem, 
-  Button,
   Badge,
   Flex,
   Input
@@ -13,10 +12,10 @@ import {
 import logo from '../dns-logo.svg';
 import styled from 'styled-components';
 
-interface NavItem {
+interface NavItemType {
   label: string;
   href: string;
-  subItems?: NavItem[];
+  subItems?: NavItemType[];
   isNew?: boolean;
 }
 
@@ -130,7 +129,7 @@ const NavigationBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const navItems: NavItem[] = [
+  const navItems: NavItemType[] = [
     {
       label: 'Dashboard',
       href: '#'
