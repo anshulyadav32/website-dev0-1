@@ -1,6 +1,32 @@
 # DNS Status Website for dev0-1.com
 
-A React-based DNS monitoring dashboard for the domain dev0-1.com owned by @anshulyadav32.
+A React-based DNS ### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+### `npm run neon`
+
+Runs the Neon CLI commands for managing your Neon Postgres database.
+
+Example: `npm run neon -- projects list`
+
+See [Neon documentation](https://neon.tech/docs/reference/neon-cli) for more information.
+
+### `npm run vercel`
+
+Runs Vercel CLI commands for managing your Vercel deployments.
+
+Example: `npm run vercel -- --help`
+
+### `npm run deploy`
+
+Deploys your application to Vercel.
+
+For production deployment: `npm run deploy -- --prod`
+
+See [VERCEL.md](VERCEL.md) for detailed deployment instructions.oring dashboard for the domain dev0-1.com owned by @anshulyadav32.
 
 ## Features
 
@@ -20,6 +46,8 @@ A React-based DNS monitoring dashboard for the domain dev0-1.com owned by @anshu
 - **DNS Queries**: Google DNS-over-HTTPS API
 - **CI/CD**: GitHub Actions with environment-specific deployments
 - **Environment Management**: Custom environment variable handling for different deployment targets
+- **Deployment**: Vercel with automatic deployments
+- **Database**: Neon Postgres serverless database
 - **HTTP Client**: Axios
 - **State Management**: React Context API
 - **Build Tool**: Create React App
