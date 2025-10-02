@@ -9,7 +9,7 @@ import {
   Flex,
   Input
 } from '../styles/StyledComponents';
-import logo from '../dns-logo.svg';
+// Removed unused logo import
 import styled from 'styled-components';
 
 interface NavItemType {
@@ -125,14 +125,32 @@ const SearchInput = styled(Input)`
   }
 `;
 
-const NavigationBar: React.FC = () => {
+interface User {
+  id: number;
+  email: string;
+  name: string;
+  role: string;
+  avatar_url?: string;
+  provider?: string;
+}
+
+interface NavigationBarProps {
+  user?: User | null;
+  onLogout?: () => void;
+}
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ user, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const navItems: NavItemType[] = [
     {
+      label: 'Home',
+      href: '/'
+    },
+    {
       label: 'Dashboard',
-      href: '#'
+      href: '/dashboard'
     },
     {
       label: 'Domain Features',
@@ -184,9 +202,10 @@ const NavigationBar: React.FC = () => {
     <Nav>
       <NavContainer>
         <NavBrand>
-          <img src={logo} alt="DNS Status" style={{ height: '32px', marginRight: '0.75rem' }} />
-          <span style={{ color: 'var(--color-primary)' }}>dev0-1.com</span>
-          <Badge variant="primary" style={{ marginLeft: '0.5rem' }}>Admin</Badge>
+          <a href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1.25rem', fontWeight: '600' }}>Anshul Yadav</span>
+            <Badge variant="primary" style={{ marginLeft: '0.5rem' }}>Developer 0→1</Badge>
+          </a>
         </NavBrand>
         
         <MobileMenuButton onClick={toggleMenu}>
@@ -245,8 +264,51 @@ const NavigationBar: React.FC = () => {
             </SearchContainer>
             
             <Flex align="center">
-              <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginRight: '0.25rem' }}>Owner:</span>
-              <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>@anshulyadav32</span>
+              {user ? (
+                <Flex align="center" style={{ gap: '0.5rem' }}>
+                  {user.avatar_url && (
+                    <img 
+                      src={user.avatar_url} 
+                      alt={user.name}
+                      style={{ 
+                        width: '32px', 
+                        height: '32px', 
+                        borderRadius: '50%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                  )}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>{user.name}</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)' }}>
+                      {user.provider === 'local' ? 'Local Account' : `${user.provider} Account`}
+                    </span>
+                  </div>
+                  <button 
+                    onClick={onLogout}
+                    style={{
+                      background: 'none',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '4px',
+                      padding: '0.25rem 0.5rem',
+                      fontSize: '0.75rem',
+                      color: 'var(--color-text-secondary)',
+                      cursor: 'pointer',
+                      marginLeft: '0.5rem'
+                    }}
+                  >
+                    Logout
+                  </button>
+                </Flex>
+              ) : (
+                <Flex align="center" style={{ gap: '1rem' }}>
+                  <a href="/auth" style={{ textDecoration: 'none', color: 'var(--color-primary)', fontSize: '0.875rem', fontWeight: 500 }}>
+                    Login
+                  </a>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', marginRight: '0.25rem' }}>Owner:</span>
+                  <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>@anshulyadav32</span>
+                </Flex>
+              )}
             </Flex>
           </Flex>
         </NavMenu>

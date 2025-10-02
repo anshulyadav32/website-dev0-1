@@ -1,127 +1,150 @@
-# DNS Status Website for dev0-1.com
+# Anshul Yadav - Developer Portfolio
 
-A React-based DNS ### `npm run eject`
+## 🚀 Developer 0 → No.1
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Welcome to my developer portfolio showcasing open source projects and professional development journey.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🌐 Live Demo
+- **Homepage**: [https://dev0-1.com](https://dev0-1.com)
+- **Dashboard**: [https://dev0-1.com/dashboard](https://dev0-1.com/dashboard)
 
-### `npm run neon`
+### 🛠️ Tech Stack
 
-Runs the Neon CLI commands for managing your Neon Postgres database.
+**Frontend:**
+- React 18 with TypeScript
+- Styled Components for styling
+- React Router for navigation
+- Context API for state management
 
-Example: `npm run neon -- projects list`
+**Backend:**
+- Node.js with Express
+- PostgreSQL with Prisma ORM
+- Passport.js for authentication
+- JWT for token management
 
-See [Neon documentation](https://neon.tech/docs/reference/neon-cli) for more information.
+**Authentication:**
+- Local email/password
+- GitHub OAuth
+- Google OAuth
 
-### `npm run vercel`
+**Database:**
+- Neon PostgreSQL (cloud)
+- Prisma ORM
+- Database migrations
 
-Runs Vercel CLI commands for managing your Vercel deployments.
+### 🚀 Features
 
-Example: `npm run vercel -- --help`
+- **Portfolio Homepage**: Professional developer showcase
+- **DNS Management**: Full-featured DNS record management
+- **Authentication System**: Multi-provider login
+- **Real-time Monitoring**: DNS status tracking
+- **Responsive Design**: Mobile-first approach
+- **Open Source**: All code available on GitHub
 
-### `npm run deploy`
+### 📦 Installation
 
-Deploys your application to Vercel.
+```bash
+# Clone the repository
+git clone https://github.com/anshulyadav32/website-dev0-1.git
+cd website-dev0-1
 
-For production deployment: `npm run deploy -- --prod`
+# Install dependencies
+npm install --legacy-peer-deps
 
-See [VERCEL.md](VERCEL.md) for detailed deployment instructions.oring dashboard for the domain dev0-1.com owned by @anshulyadav32.
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
 
-## Features
+# Set up database
+npm run db:generate
+npm run db:push
+npm run db:seed
 
-- 🌐 Real-time DNS record monitoring
-- 📊 Comprehensive DNS record display (A, AAAA, MX, NS, CNAME, TXT, SOA)
-- 🚀 Fast and responsive interface with fluid design
-- 📱 Mobile-first approach with adaptive layouts
-- ⚡ Real-time status indicators with visual feedback
-- 🔄 Auto-refresh functionality
-- 🎨 Modern and clean UI design
-- 🧩 Component-based architecture for maintainability
+# Start development server
+npm run dev:react
+```
 
-## Tech Stack
+### 🔧 Available Scripts
 
-- **Frontend**: React 18 with TypeScript
-- **Styling**: Styled Components with responsive design
-- **DNS Queries**: Google DNS-over-HTTPS API
-- **CI/CD**: GitHub Actions with environment-specific deployments
-- **Environment Management**: Custom environment variable handling for different deployment targets
-- **Deployment**: Vercel with automatic deployments
-- **Database**: Neon Postgres serverless database
-- **HTTP Client**: Axios
-- **State Management**: React Context API
-- **Build Tool**: Create React App
+```bash
+# Development
+npm run dev:react    # Start both frontend and backend
+npm run start:react  # Start React app only
+npm run api:dev      # Start API server only
 
-## Available Scripts
+# Production
+npm run build        # Build for production
+npm run api          # Start production API server
 
-In the project directory, you can run:
+# Database
+npm run db:generate  # Generate Prisma client
+npm run db:push      # Push schema to database
+npm run db:seed      # Seed database with sample data
+npm run db:studio    # Open Prisma Studio
+```
 
-### `npm start`
+### 🌍 Environment Variables
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Create a `.env` file with the following variables:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```env
+# Database
+DATABASE_URL="your_postgresql_connection_string"
 
-### `npm test`
+# API Configuration
+API_PORT=3001
+NODE_ENV=development
+FRONTEND_URL=http://localhost:3000
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# JWT & Session Secrets
+JWT_SECRET=your_jwt_secret
+SESSION_SECRET=your_session_secret
 
-### `npm run build`
+# OAuth (Optional)
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# DNS Configuration
+DNS_PROVIDER=digitalocean
+DNS_API_TOKEN=your_dns_api_token
+DOMAIN_NAME=dev0-1.com
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📱 Pages
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Homepage** (`/`): Developer portfolio and project showcase
+- **Authentication** (`/auth`): Login and registration
+- **Dashboard** (`/dashboard`): DNS management interface
+- **Admin** (`/admin`): Administrative functions
 
-### `npm run eject`
+### 🤝 Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📄 License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is open source and available under the [MIT License](LICENSE).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 👨‍💻 Author
 
-## Environment Management
+**Anshul Yadav**
+- GitHub: [@anshulyadav32](https://github.com/anshulyadav32)
+- Email: anshul@dev0-1.com
+- Website: [dev0-1.com](https://dev0-1.com)
 
-This project includes a comprehensive environment management system that handles different deployment environments (development, production, and local). See [ENVIRONMENT.md](ENVIRONMENT.md) for detailed documentation.
+### 🙏 Acknowledgments
 
-### Key Features
+- React team for the amazing framework
+- Prisma team for the excellent ORM
+- Neon for the PostgreSQL hosting
+- All open source contributors
 
-- **Environment Templates**: Pre-configured templates for different environments
-- **GitHub Actions Workflows**: Automated deployment with environment-specific configurations
-- **Secret Management**: Tools to sync environment variables with GitHub Secrets
-- **Local Development**: Scripts to generate local environment files
+---
 
-### Quick Start with Environments
-
-1. Generate a local environment file:
-   ```bash
-   # On Linux/macOS
-   ./scripts/generate-env-files.sh local
-   
-   # On Windows
-   .\scripts\generate-env-files.ps1 local
-   ```
-
-2. For deployment environments, set up GitHub Secrets using the sync scripts:
-   ```bash
-   # On Linux/macOS
-   ./scripts/sync-env-to-github.sh production
-   
-   # On Windows
-   .\scripts\sync-env-to-github.ps1 production
-   ```
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Developer 0 → No.1** - Continuous learning and improvement in the tech world! 🚀

@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import { useAuth } from './contexts/AuthContext';
 import { useDNSStatus } from './hooks/useDNSStatus';
 import StyledNavigationBar from './components/StyledNavigationBar';
 import StyledDomainHeader from './components/StyledDomainHeader';
 import StyledDNSRecordsGrid from './components/StyledDNSRecordsGrid';
 import StyledDomainDetails from './components/StyledDomainDetails';
 import StyledSubdomainManager from './components/StyledSubdomainManager';
+import AdminPage from './pages/AdminPage';
+import AuthPage from './pages/AuthPage';
+import HomePage from './pages/HomePage';
+import ProtectedRoute from './components/ProtectedRoute';
 import { Container } from './styles/StyledComponents';
 import { Tabs, TabList, Tab, TabPanel } from './styles/TabComponents';
 import { Alert } from './styles/FormComponents';
 
-const App: React.FC = () => {
-  const { dnsStatus, isLoading, error, refresh } = useDNSStatus('dev0-1.com', 'anshulyadav32');
+// Main dashboard component
+const Dashboard: React.FC = () => {
+  const { user, logout } = useAuth();
+  const { error } = useDNSStatus('dev0-1.com', 'anshulyadav32');
   const [activeTab, setActiveTab] = useState('dashboard');
   
   // Sample DNS records
@@ -75,7 +84,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <StyledNavigationBar />
+      <StyledNavigationBar user={user} onLogout={logout} />
       <StyledDomainHeader />
       
       <Container style={{ padding: '1rem 1.5rem' }}>
@@ -130,6 +139,30 @@ const App: React.FC = () => {
       </footer>
     </div>
   );
-}
+};
+
+// Main App component with routing
+const App: React.FC = () => {
+  return (
+    <AuthProvider>
+      <Router>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/auth" element={<AuthPage />} />
+                  <Route path="/dashboard" element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/admin" element={
+                    <ProtectedRoute>
+                      <AdminPage />
+                    </ProtectedRoute>
+                  } />
+                </Routes>
+      </Router>
+    </AuthProvider>
+  );
+};
 
 export default App;
